@@ -13,4 +13,4 @@
 # under the License.
 ---
 __jenkins_build_depends:
-  - java-1.8.0-openjdk
+  - java
