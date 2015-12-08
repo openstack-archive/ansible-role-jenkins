@@ -13,7 +13,7 @@
 # under the License.
 ---
 - name: Ensure build dependencies are installed.
-  yum: 
+  yum:
     pkg: "{{ item }}"
     state: installed
   with_items: jenkins_build_depends

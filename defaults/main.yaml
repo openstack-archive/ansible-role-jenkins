@@ -12,6 +12,10 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ---
+jenkins_user_name: jenkins
+jenkins_user_group: "{{ jenkins_user_name }}"
+jenkins_user_home: "/var/lib/{{ jenkins_user_name }}"
+
 jenkins_config_ajp_listen_address: 127.0.0.1
 jenkins_config_ajp_port: -1
 jenkins_config_args: ''
@@ -19,7 +23,7 @@ jenkins_config_debug_level: 5
 jenkins_config_enable_access_log: no
 jenkins_config_handler_idle: 20
 jenkins_config_handler_max: 100
-jenkins_config_home: /var/lib/jenkins
+jenkins_config_home: "{{ jenkins_user_home }}"
 jenkins_config_https_keystore: ''
 jenkins_config_https_keystore_password: ''
 jenkins_config_https_listen_address: 127.0.0.1

@@ -12,6 +12,15 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ---
+- name: Create required directories.
+  file:
+    group: "{{ jenkins_user_group }}"
+    owner: "{{ jenkins_user_name }}"
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ jenkins_user_home }}/plugins"
+
 - name: Template clouds yaml file.
   template:
     dest: "{{ jenkins_template_config_dest }}"
