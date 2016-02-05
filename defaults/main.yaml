@@ -32,7 +32,7 @@ jenkins_config_java_cmd: ''
 jenkins_config_java_options: '-Djava.awt.headless=true'
 jenkins_config_listen_address: 127.0.0.1
 jenkins_config_port: 8008
-jenkins_config_user: jenkins
+jenkins_config_user: "{{ jenkins_user_name }}"
 
 jenkins_template_config_dest: /etc/sysconfig/jenkins
 jenkins_template_config_src: etc/sysconfig/jenkins.j2
