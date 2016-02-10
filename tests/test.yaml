@@ -18,18 +18,19 @@
     rolename: "{{ lookup('pipe', 'pwd') | dirname | basename }}"
 
   pre_tasks:
-    # Make sure OS does not have a stale package cache.
-    - name: Update apt cache.
-      apt:
-        update_cache: yes
-      when: ansible_os_family == 'Debian'
-
     - name: Configure yum for Jenkins repository.
       become: yes
       copy:
         src: jenkins/etc/yum.repos.d/jenkins.repo
         dest: /etc/yum.repos.d
       when: ansible_os_family == 'RedHat'
+
+    - name: Configure apt for Jenkins repository.
+      become: yes
+      copy:
+        src: jenkins/etc/apt/sources.list.d/jenkins.list
+        dest: /etc/apt/sources.list.d
+      when: ansible_os_family == 'Debian'
 
     - name: Configure gpg key for Jenkins repository.
       become: yes
@@ -43,6 +44,17 @@
       rpm_key:
         key: /etc/pki/rpm-gpg/jenkins-ci.org.key
       when: ansible_os_family == 'RedHat'
+
+    - name: Import GPG key for Jenkins repo.
+      become: yes
+      apt_key:
+        data: "{{ lookup('file', 'jenkins/jenkins-ci.org.key') }}"
+      when: ansible_os_family == 'Debian'
+
+    - name: Update apt cache.
+      apt:
+        update_cache: yes
+      when: ansible_os_family == 'Debian'
 
   roles:
     - "{{ rolename }}"

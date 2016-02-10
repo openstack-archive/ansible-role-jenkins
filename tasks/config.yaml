@@ -21,8 +21,9 @@
   with_items:
     - "{{ jenkins_user_home }}/plugins"
 
-- name: Template clouds yaml file.
+- name: Template jenkins service config.
   template:
     dest: "{{ jenkins_template_config_dest }}"
     src: "{{ jenkins_template_config_src }}"
+  when: ansible_os_family == 'RedHat'
   notify: Restart jenkins
