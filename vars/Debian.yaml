@@ -12,13 +12,5 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 ---
-- name: Ensure build dependencies are installed.
-  yum:
-    pkg: "{{ item }}"
-    state: installed
-  with_items: jenkins_build_depends
-
-- name: Ensure jenkins is installed.
-  yum:
-    pkg: jenkins
-    state: installed
+__jenkins_build_depends:
+  - java
