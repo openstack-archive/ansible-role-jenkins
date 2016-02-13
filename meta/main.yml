@@ -14,10 +14,10 @@
 ---
 galaxy_info:
   author: Paul Belanger
-  description: |
+  description: Ansible role to manage Jenkins
   company: Red Hat, Inc.
   license: Apache
-  min_ansible_version: 1.9
+  min_ansible_version: 2.0
   platforms:
   - name: EL
     versions:

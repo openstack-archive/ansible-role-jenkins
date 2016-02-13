@@ -13,7 +13,7 @@
 # under the License.
 ---
 - name: Restart jenkins
+  become: yes
   service:
     name: jenkins
     state: restarted
-  sudo: yes
