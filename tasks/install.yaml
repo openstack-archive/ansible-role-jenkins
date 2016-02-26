@@ -21,7 +21,7 @@
   package:
     name: "{{ item }}"
     state: installed
-  with_items: jenkins_build_depends
+  with_items: "{{ jenkins_build_depends }}"
 
 - name: Ensure jenkins is installed.
   package:
