@@ -15,13 +15,13 @@
 - name: Define jenkins_build_depends.
   set_fact:
     jenkins_build_depends: "{{ __jenkins_build_depends | list }}"
-  when: jenkins_build_depends is not defined
+  when: "{{ jenkins_build_depends }} is not defined"
 
 - name: Ensure build dependencies are installed.
   package:
     name: "{{ item }}"
     state: installed
-  with_items: jenkins_build_depends
+  with_items: "{{ jenkins_build_depends }}"
 
 - name: Ensure jenkins is installed.
   package:
