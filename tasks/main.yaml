@@ -15,11 +15,11 @@
 - name: Include OS-specific variables.
   include_vars: "{{ ansible_os_family }}.yaml"
 
-- include: install.yaml
+- include_tasks: install.yaml
   become: yes
 
-- include: config.yaml
+- include_tasks: config.yaml
   become: yes
 
-- include: service.yaml
+- include_tasks: service.yaml
   become: yes
